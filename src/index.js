@@ -2,30 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 
 import { createStore } from 'redux';
+import noteReducer from './reducers/noteReducer';
 
-// reducers
-const counterReducer = (state = 0, action) => {
-  switch (action.type) {
-    case 'INCREMENT':
-      return state + 1;
-    case 'DECREMENT':
-      return state - 1;
-    case 'ZERO':
-      return 0;
-    default:
-      return state;
-  }
-};
-const noteReducer = (state = [], action) => {
-  if (action.type === 'NEW_NOTE') {
-    state.push(action.data);
-    return state;
-  }
-
-  return state;
-};
 // store
-// const store = createStore(counterReducer);
 const store = createStore(noteReducer);
 
 store.dispatch({
@@ -67,11 +46,3 @@ const renderApp = () => {
 
 renderApp();
 store.subscribe(renderApp);
-
-// lastAPP
-// <div>
-//  <div>{store.getState()}</div>
-//  <button onClick={(e) => store.dispatch({ type: 'INCREMENT' })}>plus</button>
-//  <button onClick={(e) => store.dispatch({ type: 'DECREMENT' })}>minus</button>
-//  <button onClick={(e) => store.dispatch({ type: 'ZERO' })}>zero</button>
-// </div>;
