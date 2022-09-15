@@ -14,7 +14,7 @@ const initialState = [
 
 // reducer
 const noteReducer = (state = initialState, action) => {
-  console.log('ACTION: ', action);
+  // console.log('STATE', state, 'ACTION', action);
   switch (action.type) {
     case 'NEW_NOTE':
       return [...state, action.data];
